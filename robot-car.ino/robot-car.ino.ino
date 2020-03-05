@@ -1,11 +1,15 @@
 /*
- * Firmware for the "2WD Ultrasonic Motor Robot Car Kit"
+ *  Original Firmware for the "2WD Ultrasonic Motor Robot Car Kit"
  * 
  * Stephen A. Edwards
  * 
  * Hardware configuration:
  *  A pair of DC motors driven by an L298N H bridge motor driver
  *  AN HC-SR04 ultrasonic range sensor mounted atop a small hobby servo
+ * 
+ * 
+ * Additionals edits made by EGG Spring 2020 Team lead team
+ * 
  */
 
  #include <Servo.h>
