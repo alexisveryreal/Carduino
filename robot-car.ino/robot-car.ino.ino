@@ -143,8 +143,8 @@ void moveRight(unsigned long sec){
 
   sec *= interval;
 
-  go(LEFT, 255);
-  go(RIGHT, 255);
+  go(LEFT, -255);
+  go(RIGHT, -255);
   delay(sec);
   go(LEFT, 0);
   go(RIGHT, 0);
@@ -156,8 +156,8 @@ void moveLeft(unsigned long sec){
 
   sec *= interval;
 
-  go(LEFT, -255);
-  go(RIGHT, -255);
+  go(LEFT, 255);
+  go(RIGHT, 255);
   delay(sec);
   go(LEFT, 0);
   go(RIGHT, 0);
