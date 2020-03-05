@@ -30,7 +30,7 @@
  const int in4Pin = 2; // Right motor Direction 2
  const int enBPin = 3; // Right motor PWM speed control
 
-typedef enum Motor{LEFT, RIGHT};
+typedef enum Motor{LEFT, RIGHT} Motor;
 Motor m;
 
 #define NUM_ANGLES 7
@@ -73,6 +73,8 @@ void setup() {
   // for (unsigned char i = 0; i <NUM_ANGLES; i++){
   //   readNextDistance(), delay(200);
   // }
+
+  moveForward(1);
 }
 
 // Main Loop:
@@ -82,7 +84,7 @@ void setup() {
 // otherwise, go forward
 //
 void loop(){
-  moveForward();
+ 
 
   //See if something is too close at any anngle
   // unsigned char tooClose = 0;
@@ -103,7 +105,7 @@ void loop(){
   // }
 
   //loop for 1 sec
-  delay(1000);
+  // delay(1000);
 }
 
 
@@ -158,16 +160,24 @@ void testMotors(){
 //   servo.write(sensorAngle[angleIndex]);
 // }
 
-// Move forward
-// Assuming that you have your red and bllack wires switched so that 
-// Right: 
-//  black wire
-//  red wire
-// Left:
-//  red wire
-//  black wire
-void moveForward(){
+/* Move forward
+  Assuming that you have your red and bllack wires switched so that 
+  Right: 
+    black wire
+    red wire
+  Left:
+    red wire
+    black wire
+*/  
+void moveForward(unsigned long sec){
+  unsigned long interval = 1000;
 
-  go(RIGHT, -255);
+  sec *= interval;
+
   go(LEFT, 255);
+  go(RIGHT, -255);
+  delay(sec);
+  go(LEFT, 0);
+  go(RIGHT, 0);
+    
 }
