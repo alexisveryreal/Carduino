@@ -20,7 +20,7 @@
  const int echoPin = 12; // Width of high pulse indicates distance
 
  //Servo motor aims ultrasonic sensor.
- const int servoPin = 11; //PWM output for hobby servo
+ //const int servoPin = 11; //PWM output for hobby servo
 
  // Motor control pins: L298N H bridge
  const int enAPin = 6; // Left motor PWM speed control
@@ -66,47 +66,17 @@ void setup() {
 
   //testMotors();
 
-  //Scan the surroundings before starting
-
-  // servo.write(sensorAngle[0]);
-  // delay(200);
-  // for (unsigned char i = 0; i <NUM_ANGLES; i++){
-  //   readNextDistance(), delay(200);
-  // }
-
   moveForward(5);
   moveBackward(5);
+  moveLeft(3);
+  moveRight(3);
 }
 
 // Main Loop:
-//
-// Get the next sensor reading
-// If anything appears to be too close, back up
-// otherwise, go forward
-//
+// Nothing, unless students want to repeat
+// the same steps over and over
 void loop(){
  
-
-  //See if something is too close at any anngle
-  // unsigned char tooClose = 0;
-  // for(unsigned char i = 0; i < NUM_ANGLES; i++){
-  //   if(distance[i] < 300){
-  //     tooClose = 1;
-  //   }
-  // }
-
-  // if( tooClose) {
-  //   //Something's nearby: back up left
-  //   go(LEFT, -180);
-  //   go(RIGHT, -80);
-  // } else {
-  //   //Nothing in our way: go forward
-  //   go(LEFT,255);
-  //   go(RIGHT,255);
-  // }
-
-  //loop for 1 sec
-  // delay(1000);
 }
 
 
@@ -133,36 +103,8 @@ void testMotors(){
   }
 }
 
-//Read distance from the ultrasonic sensor, return distance in mm
-//
-// Speed of sound in dry air, 20C is 343 m/s
-// pulseIn returns time in microseconds (10^-6)
-// 2d = p * 10^-6s * 343 m/s = p * 0.00343 m = p * 0.343 mm/us
-// unsigned int readDistance(){
-//   digitalWrite(trigPin, HIGH);
-//   delayMicroseconds(10);
-//   digitalWrite(trigPin, LOW);
-//   unsigned long period = pulseIn(echoPin, HIGH);
-//   return period * 343 / 2000;
-// }
-
-
-//Scan the area ahead by sweeping the ultrasonic sensor left and right
-// and recording the distance observed. This takes a reading, then
-// sends the servo to the next angles. Call repeatedly once every 50ms or so.
-// void readNextDistance(){
-//   static unsigned char angleIndex = 0;
-//   static signed char step = 1;
-
-//   distance[angleIndex] = readDistance();
-//   angleIndex += step;
-//   if(angleIndex == NUM_ANGLES -1)step = -1;
-//   else if (angleIndex = 0) step = 1;
-//   servo.write(sensorAngle[angleIndex]);
-// }
-
 /* Move forward
-  Assuming that you have your red and bllack wires switched so that 
+  Assuming that you have your red and black wires switched so that 
   Right: 
     black wire
     red wire
@@ -190,6 +132,32 @@ void moveBackward(unsigned long sec){
 
   go(LEFT, -255);
   go(RIGHT, 255);
+  delay(sec);
+  go(LEFT, 0);
+  go(RIGHT, 0);
+    
+}
+
+void moveRight(unsigned long sec){
+  unsigned long interval = 1000;
+
+  sec *= interval;
+
+  go(LEFT, 255);
+  go(RIGHT, 255);
+  delay(sec);
+  go(LEFT, 0);
+  go(RIGHT, 0);
+    
+}
+
+void moveLeft(unsigned long sec){
+  unsigned long interval = 1000;
+
+  sec *= interval;
+
+  go(LEFT, -255);
+  go(RIGHT, -255);
   delay(sec);
   go(LEFT, 0);
   go(RIGHT, 0);
