@@ -64,7 +64,7 @@ void setup() {
   //go(LEFT, 0);
   //go(RIGHT, 0);
 
-  testMotors();
+  //testMotors();
 
   //Scan the surroundings before starting
 
@@ -75,6 +75,7 @@ void setup() {
   // }
 
   moveForward(1);
+  moveBackward(1);
 }
 
 // Main Loop:
@@ -176,6 +177,19 @@ void moveForward(unsigned long sec){
 
   go(LEFT, 255);
   go(RIGHT, -255);
+  delay(sec);
+  go(LEFT, 0);
+  go(RIGHT, 0);
+    
+}
+
+void moveBackward(unsigned long sec){
+  unsigned long interval = 1000;
+
+  sec *= interval;
+
+  go(LEFT, -255);
+  go(RIGHT, 255);
   delay(sec);
   go(LEFT, 0);
   go(RIGHT, 0);
