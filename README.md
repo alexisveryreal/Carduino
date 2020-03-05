@@ -32,7 +32,7 @@ The source code of Carduino can be found [here](./robot-car.ino/).
 See also the list of [contributors](https://github.com/alexisveryreal/Carduino/graphs/contributors) who participated in this project.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md/) file for details
 
 ## Acknowledgments
 
