@@ -16,11 +16,11 @@
  Servo servo;
 
  //Ultrasonic Module Pins
- const int trigPin = 13;  //10 microsecond high pulse causes chirp, wait 50 us
- const int echoPin = 12; // Width of high pulse indicates distance
+ //const int trigPin = 13;  //10 microsecond high pulse causes chirp, wait 50 us
+ //const int echoPin = 12; // Width of high pulse indicates distance
 
  //Servo motor aims ultrasonic sensor.
- //const int servoPin = 11; //PWM output for hobby servo
+// const int servoPin = 11; //PWM output for hobby servo
 
  // Motor control pins: L298N H bridge
  const int enAPin = 6; // Left motor PWM speed control
@@ -47,9 +47,9 @@ unsigned int distance[NUM_ANGLES];
 // Scan the surroundings once
 //
 void setup() {
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
-  digitalWrite(trigPin, LOW);
+//  pinMode(trigPin, OUTPUT);
+ // pinMode(echoPin, INPUT);
+ // digitalWrite(trigPin, LOW);
 
   pinMode(enAPin, OUTPUT);
   pinMode(in1Pin, OUTPUT);
@@ -58,8 +58,8 @@ void setup() {
   pinMode(in4Pin, OUTPUT);
   pinMode(enBPin, OUTPUT);
 
-  servo.attach(servoPin);
-  servo.write(90);
+ // servo.attach(servoPin);
+ // servo.write(90);
 
   //go(LEFT, 0);
   //go(RIGHT, 0);
@@ -130,8 +130,8 @@ void moveBackward(unsigned long sec){
 
   sec *= interval;
 
-  go(LEFT, -255);
-  go(RIGHT, 255);
+  go(LEFT, -128);
+  go(RIGHT, 128);
   delay(sec);
   go(LEFT, 0);
   go(RIGHT, 0);
