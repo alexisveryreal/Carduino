@@ -74,8 +74,8 @@ void setup() {
   //   readNextDistance(), delay(200);
   // }
 
-  moveForward(1);
-  moveBackward(1);
+  moveForward(5);
+  moveBackward(5);
 }
 
 // Main Loop:
