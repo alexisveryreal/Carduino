@@ -61,18 +61,18 @@ void setup() {
   servo.attach(servoPin);
   servo.write(90);
 
-  go(LEFT, 0);
-  go(RIGHT, 0);
+  //go(LEFT, 0);
+  //go(RIGHT, 0);
 
   testMotors();
 
   //Scan the surroundings before starting
 
-  servo.write(sensorAngle[0]);
-  delay(200);
-  for (unsigned char i = 0; i <NUM_ANGLES; i++){
-    readNextDistance(), delay(200);
-  }
+  // servo.write(sensorAngle[0]);
+  // delay(200);
+  // for (unsigned char i = 0; i <NUM_ANGLES; i++){
+  //   readNextDistance(), delay(200);
+  // }
 }
 
 // Main Loop:
@@ -82,28 +82,28 @@ void setup() {
 // otherwise, go forward
 //
 void loop(){
-  readNextDistance();
+  moveForward();
 
   //See if something is too close at any anngle
-  unsigned char tooClose = 0;
-  for(unsigned char i = 0; i < NUM_ANGLES; i++){
-    if(distance[i] < 300){
-      tooClose = 1;
-    }
-  }
+  // unsigned char tooClose = 0;
+  // for(unsigned char i = 0; i < NUM_ANGLES; i++){
+  //   if(distance[i] < 300){
+  //     tooClose = 1;
+  //   }
+  // }
 
-  if( tooClose) {
-    //Something's nearby: back up left
-    go(LEFT, -180);
-    go(RIGHT, -80);
-  } else {
-    //Nothing in our way: go forward
-    go(LEFT,255);
-    go(RIGHT,255);
-  }
+  // if( tooClose) {
+  //   //Something's nearby: back up left
+  //   go(LEFT, -180);
+  //   go(RIGHT, -80);
+  // } else {
+  //   //Nothing in our way: go forward
+  //   go(LEFT,255);
+  //   go(RIGHT,255);
+  // }
 
-  //Check the next direction in 50ms
-  delay(50);
+  //loop for 1 sec
+  delay(1000);
 }
 
 
@@ -135,25 +135,39 @@ void testMotors(){
 // Speed of sound in dry air, 20C is 343 m/s
 // pulseIn returns time in microseconds (10^-6)
 // 2d = p * 10^-6s * 343 m/s = p * 0.00343 m = p * 0.343 mm/us
-unsigned int readDistance(){
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
-  unsigned long period = pulseIn(echoPin, HIGH);
-  return period * 343 / 2000;
-}
+// unsigned int readDistance(){
+//   digitalWrite(trigPin, HIGH);
+//   delayMicroseconds(10);
+//   digitalWrite(trigPin, LOW);
+//   unsigned long period = pulseIn(echoPin, HIGH);
+//   return period * 343 / 2000;
+// }
 
 
 //Scan the area ahead by sweeping the ultrasonic sensor left and right
 // and recording the distance observed. This takes a reading, then
 // sends the servo to the next angles. Call repeatedly once every 50ms or so.
-void readNextDistance(){
-  static unsigned char angleIndex = 0;
-  static signed char step = 1;
+// void readNextDistance(){
+//   static unsigned char angleIndex = 0;
+//   static signed char step = 1;
 
-  distance[angleIndex] = readDistance();
-  angleIndex += step;
-  if(angleIndex == NUM_ANGLES -1)step = -1;
-  else if (angleIndex = 0) step = 1;
-  servo.write(sensorAngle[angleIndex]);
+//   distance[angleIndex] = readDistance();
+//   angleIndex += step;
+//   if(angleIndex == NUM_ANGLES -1)step = -1;
+//   else if (angleIndex = 0) step = 1;
+//   servo.write(sensorAngle[angleIndex]);
+// }
+
+// Move forward
+// Assuming that you have your red and bllack wires switched so that 
+// Right: 
+//  black wire
+//  red wire
+// Left:
+//  red wire
+//  black wire
+void moveForward(){
+
+  go(RIGHT, -255);
+  go(LEFT, 255);
 }
