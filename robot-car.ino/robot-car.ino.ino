@@ -64,10 +64,10 @@ void setup() {
   //go(LEFT, 0);
   //go(RIGHT, 0);
 
-  //testMotors();
+//  testMotors();
 
-  moveForward(5);
-  moveBackward(5);
+//  moveForward(5);
+//  moveBackward(5);
   moveLeft(3);
   moveRight(3);
 }
@@ -118,7 +118,7 @@ void moveForward(unsigned long sec){
   sec *= interval;
 
   go(LEFT, 255);
-  go(RIGHT, -255);
+  go(RIGHT, 255);
   delay(sec);
   go(LEFT, 0);
   go(RIGHT, 0);
@@ -126,19 +126,6 @@ void moveForward(unsigned long sec){
 }
 
 void moveBackward(unsigned long sec){
-  unsigned long interval = 1000;
-
-  sec *= interval;
-
-  go(LEFT, -128);
-  go(RIGHT, 128);
-  delay(sec);
-  go(LEFT, 0);
-  go(RIGHT, 0);
-    
-}
-
-void moveRight(unsigned long sec){
   unsigned long interval = 1000;
 
   sec *= interval;
@@ -151,12 +138,25 @@ void moveRight(unsigned long sec){
     
 }
 
-void moveLeft(unsigned long sec){
+void moveRight(unsigned long sec){
   unsigned long interval = 1000;
 
   sec *= interval;
 
   go(LEFT, 255);
+  go(RIGHT, -255);
+  delay(sec);
+  go(LEFT, 0);
+  go(RIGHT, 0);
+    
+}
+
+void moveLeft(unsigned long sec){
+  unsigned long interval = 1000;
+
+  sec *= interval;
+
+  go(LEFT, -255);
   go(RIGHT, 255);
   delay(sec);
   go(LEFT, 0);
