@@ -155,7 +155,7 @@ void testMotors(){
  *    the seconds that are passed in by 1000 to convert into ms
  *      E.g.,  4 seconds = 4000ms
  *    Note that go runs until told to stop by go(Left,0) || go(Right, 0)
- *  We use the delay() function run the set amount of time wanted, then call go again to stop.
+ *  We use the delay() function run the set amount of time wanted, then call go() again to stop.
  *  
  *  This is repeated for each of the four functions below
 */  
@@ -213,7 +213,7 @@ void moveRight(unsigned long sec){
 /*
  * moveLeft: (Moves left for x seconds)
  *  notice that the left and right values are switched
- *  this is so that when one tire turns forward the ohter back, for faster turns
+ *  this is so that when one tire turns forward the other back, for faster turns
  */
 void moveLeft(unsigned long sec){
   unsigned long interval = 1000;
