@@ -64,19 +64,64 @@ void setup() {
   //go(LEFT, 0);
   //go(RIGHT, 0);
 
+
+
+
+
+
+ // RIGHT CODE HERE IF YOU WANT TO JUST RUN ONCE
+
+
+
+
+
+
+
+
 //  testMotors();
 
-//  moveForward(5);
-//  moveBackward(5);
-  moveLeft(3);
-  moveRight(3);
+  
+  moveForward(5);
+  moveBackward(5);
+  moveLeft(1);
+  moveRight(1);
+
+
+
+
+
+
+
+
+
+
+  
+
+
 }
 
 // Main Loop:
 // Nothing, unless students want to repeat
 // the same steps over and over
 void loop(){
- 
+
+
+
+
+
+  // RIGHT CODE HERE IF YOU WANT TO LOOP
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -103,14 +148,16 @@ void testMotors(){
   }
 }
 
-/* Move forward
-  Assuming that you have your red and black wires switched so that 
-  Right: 
-    black wire
-    red wire
-  Left:
-    red wire
-    black wire
+/* moveForward: (moves forward for x seconds)
+ *  [Might need to switch motor cables if moveForward not working]
+ * 
+ *  go() function accepts the speeds in ms, thus multiplying
+ *    the seconds that are passed in by 1000 to convert into ms
+ *      E.g.,  4 seconds = 4000ms
+ *    Note that go runs until told to stop by go(Left,0) || go(Right, 0)
+ *  We use the delay() function run the set amount of time wanted, then call go again to stop.
+ *  
+ *  This is repeated for each of the four functions below
 */  
 void moveForward(unsigned long sec){
   unsigned long interval = 1000;
@@ -125,6 +172,11 @@ void moveForward(unsigned long sec){
     
 }
 
+/* 
+ * moveBackward: (moves back for x seconds)
+ *  same as forward but switched to negative speeds
+ *  thus rotating the motors in the opposite direction.
+ */
 void moveBackward(unsigned long sec){
   unsigned long interval = 1000;
 
@@ -138,6 +190,13 @@ void moveBackward(unsigned long sec){
     
 }
 
+/*
+ * moveRight: ( Moves right for x seconds)
+ * the go function accepts varying levels of speeds
+ * 255 is full speed
+ * 0 is full STOP
+ * 
+ */
 void moveRight(unsigned long sec){
   unsigned long interval = 1000;
 
@@ -151,6 +210,11 @@ void moveRight(unsigned long sec){
     
 }
 
+/*
+ * moveLeft: (Moves left for x seconds)
+ *  notice that the left and right values are switched
+ *  this is so that when one tire turns forward the ohter back, for faster turns
+ */
 void moveLeft(unsigned long sec){
   unsigned long interval = 1000;
 
